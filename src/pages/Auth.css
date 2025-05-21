@@ -1,0 +1,7 @@
+form input::placeholder {
+    color: #888;
+}
+
+.btn-outline-dark i {
+    font-size: 1.2rem;
+}
