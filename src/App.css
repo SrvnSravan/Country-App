@@ -61,6 +61,13 @@ textarea::placeholder {
   color: #61dafb;
 }
 
+.container-fluid {
+  padding-left: 6rem !important;
+  padding-right: 6rem !important;
+  max-width: 100%;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

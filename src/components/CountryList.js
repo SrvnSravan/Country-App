@@ -15,7 +15,7 @@ const countries = [
 
 const CountryList = () => {
     return (
-        <Container className="py-4">
+        <Container fluid className=" py-4">
             <Row>
                 {countries.map((country, idx) => (
                     <Col key={idx} xs={12} md={6} className="mb-3">
