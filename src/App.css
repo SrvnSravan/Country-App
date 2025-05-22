@@ -1,3 +1,36 @@
+/* Global text color only for body, excluding buttons */
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgba(61, 61, 61, 1);
+}
+
+/* Keep default colors for buttons */
+button,
+.btn {
+  color: inherit;
+  /* Keeps the button's original color (set by Bootstrap or inline styles) */
+}
+
+/* OR if needed, explicitly restore Bootstrap's default */
+button,
+.btn {
+  color: white;
+  /* or whatever your desired button text color is */
+}
+
+/* Ensure links, labels, and placeholders follow the new color */
+a,
+label {
+  color: rgba(61, 61, 61, 1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(61, 61, 61, 1);
+}
+
+
+/* Leave the rest of your existing styles unchanged */
 .App {
   text-align: center;
 }
@@ -32,6 +65,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

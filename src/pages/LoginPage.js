@@ -9,42 +9,58 @@ function LoginPage() {
             <div className="row flex-grow-1 align-items-center justify-content-center">
                 <div className="col-md-6 col-lg-5 px-5">
                     <div className="text-start">
-                        <h2 className="mb-3 fw-bold">Sign In</h2>
-                        <p className="mb-2">
+                        <h2 className="mb-3 fw-bold" style={{ fontWeight: 700 }}>Sign In</h2>
+                        <p className="mb-2" style={{ fontWeight: 700 }}>
                             <strong>New user?</strong>{' '}
                             <Link to="/signup" className="text-primary text-decoration-none">Create an account</Link>
                         </p>
                     </div>
 
                     <form>
-                        <div className="mb-3">
-                            <input type="text" className="form-control" placeholder="Username or email" />
+                        <div className="mb-3" >
+                            <input type="text" className="form-control" style={{ fontWeight: 600 }} placeholder="Username or email" />
                         </div>
                         <div className="mb-3">
-                            <input type="password" className="form-control" placeholder="Password" />
+                            <input type="password" className="form-control" style={{ fontWeight: 600 }} placeholder="Password" />
                         </div>
                         <div className="mb-3 form-check d-flex align-items-center gap-2">
-                            <input type="checkbox" className="form-check-input" id="rememberMe" />
-                            <label className="form-check-label" htmlFor="rememberMe">Keep me signed in</label>
+                            <input type="checkbox" className="form-check-input" id="rememberMe" style={{
+                                width: "32px",
+                                height: "32px",
+                                border: "2px solid rgba(61, 61, 61, 1)",
+                                borderRadius: "0"
+                            }} />
+                            <label className="form-check-label" htmlFor="rememberMe" style={{ fontWeight: 600 }}>Keep me signed in</label>
                         </div>
                         <button type="submit" className="btn btn-dark w-100">Sign In</button>
                     </form>
 
-                    <div className="text-center my-3">
-                        <hr />
-                        <span className="small text-muted">Or Sign In With</span>
+                    <div className="d-flex align-items-center my-3">
+                        <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(61, 61, 61, 0.3)' }}></div>
+                        <span className="px-2" style={{ color: 'rgba(61, 61, 61, 1)', fontSize: '14px' }}>Or Sign In With</span>
+                        <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(61, 61, 61, 0.3)' }}></div>
                     </div>
 
+
                     <div className="d-flex justify-content-center gap-3">
-                        <button className="btn btn-outline-dark rounded-circle"><i className="bi bi-google"></i></button>
-                        <button className="btn btn-outline-dark rounded-circle"><i className="bi bi-facebook"></i></button>
-                        <button className="btn btn-outline-dark rounded-circle"><i className="bi bi-linkedin"></i></button>
-                        <button className="btn btn-outline-dark rounded-circle"><i className="bi bi-twitter"></i></button>
+                        <button className="btn btn-outline-dark rounded-circle">
+                            <i className="bi bi-google social-icon"></i>
+                        </button>
+                        <button className="btn btn-outline-dark rounded-circle">
+                            <i className="bi bi-facebook social-icon"></i>
+                        </button>
+                        <button className="btn btn-outline-dark rounded-circle">
+                            <i className="bi bi-linkedin social-icon"></i>
+                        </button>
+                        <button className="btn btn-outline-dark rounded-circle">
+                            <i className="bi bi-twitter social-icon"></i>
+                        </button>
                     </div>
+
                 </div>
 
                 <div className="col-md-6 d-none d-md-flex justify-content-center align-items-center">
-                    <img src="https://undraw.co/api/illustrations/af8e4045-1fdc-44be-95b7-9b823fd1b3e1" alt="Illustration" className="img-fluid" style={{ maxHeight: "400px" }} />
+                    <img src="https://cdni.iconscout.com/illustration/free/thumb/user-login-7329999-5991694.png" alt="Illustration" className="img-fluid" style={{ maxHeight: "400px" }} />
                 </div>
             </div>
         </div>
