@@ -1,0 +1,18 @@
+.welcome-wrapper {
+    width: 100%;
+    max-width: 1140px;
+    /* Bootstrap container size */
+    margin: 0 auto;
+}
+
+.line {
+    height: 2px;
+    background-color: #333;
+}
+
+.welcome-text {
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #333;
+}
