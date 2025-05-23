@@ -62,8 +62,8 @@ textarea::placeholder {
 }
 
 .container-fluid {
-  padding-left: 6rem !important;
-  padding-right: 6rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
   max-width: 100%;
 }
 

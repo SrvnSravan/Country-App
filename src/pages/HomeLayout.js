@@ -11,7 +11,7 @@ import CountryGrid from "../components/CountryList";
 const HomeLayout = () => {
 
     return (
-        <div>
+        <div  >
             <Header />
             <WelcomeBanner />
             <ImageSlider />

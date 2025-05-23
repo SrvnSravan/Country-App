@@ -10,8 +10,7 @@ const ImageSlider = () => {
                     <div
                         className="d-flex align-items-center justify-content-center bg-light border"
                         style={{
-                            height: "60vh", // relative height
-                            // maxHeight: "480px",
+                            height: "60vh",
                             overflow: "hidden",
                         }}
                     >
