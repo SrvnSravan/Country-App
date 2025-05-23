@@ -2,37 +2,70 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 
-function LoginPage() {
+function SignupPage() {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({ username: '', password: '' });
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+    });
     const [errors, setErrors] = useState({});
+
+    const validateEmail = (email) => {
+        return email.includes('@') && email.includes('.com');
+    };
+
+    const validatePassword = (password) => {
+        const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        return regex.test(password);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const user = users.find(u => u.username === formData.username);
-
         let newErrors = {};
 
-        if (!user) {
-            newErrors.username = 'User not found. Please sign up.';
-        } else if (user.password !== formData.password) {
-            newErrors.password = 'Incorrect password.';
+        if (!formData.username.trim()) {
+            newErrors.username = 'Username or email is required.';
+        } else if (!validateEmail(formData.username)) {
+            newErrors.username = 'Invalid email. Must include "@" and ".com".';
+        }
+
+        if (!validatePassword(formData.password)) {
+            newErrors.password =
+                'Password must be at least 8 characters long and include at least 1 capital letter, 1 number, and 1 symbol.';
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+            newErrors.confirmPassword = 'Passwords do not match.';
+        }
+
+        // Check for duplicate username/email in users list only if username validation passed
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        if (!newErrors.username) {
+            const userExists = users.some(user => user.username === formData.username);
+            if (userExists) {
+                newErrors.username = 'User with this email already exists.';
+            }
         }
 
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length === 0) {
-            alert('Login successful!');
+            users.push({
+                username: formData.username,
+                password: formData.password,
+            });
 
-            // Store logged-in user in localStorage
-            localStorage.setItem('loggedInUser', user.username);
+            localStorage.setItem('users', JSON.stringify(users));
 
-            navigate('/home'); // Redirect after login
+            alert('User created successfully!');
+            navigate('/');
         }
     };
+
+
+
 
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -43,11 +76,11 @@ function LoginPage() {
             <div className="row flex-grow-1 align-items-center justify-content-center">
                 <div className="col-md-6 col-lg-5 px-5">
                     <div className="text-start">
-                        <h2 className="mb-3 fw-bold">Sign In</h2>
+                        <h2 className="mb-3 fw-bold">Sign Up</h2>
                         <p className="mb-2 fw-bold">
-                            <strong>New user?</strong>{' '}
-                            <Link to="/signup" className="text-primary text-decoration-none">
-                                Create an account
+                            <strong>Existing user?</strong>{' '}
+                            <Link to="/" className="text-primary text-decoration-none">
+                                Sign In
                             </Link>
                         </p>
                     </div>
@@ -63,7 +96,9 @@ function LoginPage() {
                                 style={{ fontWeight: 600 }}
                                 placeholder="Username or email"
                             />
-                            {errors.username && <div className="invalid-feedback">{errors.username}</div>}
+                            {errors.username && (
+                                <div className="invalid-feedback">{errors.username}</div>
+                            )}
                         </div>
 
                         <div className="mb-3">
@@ -76,52 +111,37 @@ function LoginPage() {
                                 style={{ fontWeight: 600 }}
                                 placeholder="Password"
                             />
-                            {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+                            {errors.password && (
+                                <div className="invalid-feedback">{errors.password}</div>
+                            )}
                         </div>
 
-                        <div className="mb-3 form-check d-flex align-items-center gap-2">
+                        <div className="mb-3">
                             <input
-                                type="checkbox"
-                                className="form-check-input"
-                                id="rememberMe"
-                                style={{
-                                    width: '32px',
-                                    height: '32px',
-                                    border: '2px solid rgba(61, 61, 61, 1)',
-                                    borderRadius: '0',
-                                }}
+                                type="password"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                                style={{ fontWeight: 600 }}
+                                placeholder="Confirm Password"
                             />
-                            <label className="form-check-label fw-semibold" htmlFor="rememberMe">
-                                Keep me signed in
-                            </label>
+                            {errors.confirmPassword && (
+                                <div className="invalid-feedback">{errors.confirmPassword}</div>
+                            )}
                         </div>
 
                         <button type="submit" className="btn btn-dark w-100">
-                            Sign In
+                            Sign Up
                         </button>
                     </form>
 
                     <div className="d-flex align-items-center my-3">
-                        <div
-                            style={{
-                                flex: 1,
-                                height: '1px',
-                                backgroundColor: 'rgba(61, 61, 61, 0.3)',
-                            }}
-                        ></div>
-                        <span
-                            className="px-2"
-                            style={{ color: 'rgba(61, 61, 61, 1)', fontSize: '14px' }}
-                        >
+                        <div className="flex-grow-1 border-top"></div>
+                        <span className="px-2 text-muted" style={{ fontSize: '14px' }}>
                             Or Sign In With
                         </span>
-                        <div
-                            style={{
-                                flex: 1,
-                                height: '1px',
-                                backgroundColor: 'rgba(61, 61, 61, 0.3)',
-                            }}
-                        ></div>
+                        <div className="flex-grow-1 border-top"></div>
                     </div>
 
                     <div className="d-flex justify-content-center gap-3">
@@ -153,4 +173,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default SignupPage;
