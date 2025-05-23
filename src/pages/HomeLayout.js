@@ -5,7 +5,7 @@ import HeroSection from "../components/HeroSections";
 import CountryCard from "../components/CountryCardHorizontal";
 import LoadMoreButton from "../components/LoadMoreButton";
 import Footer from "../components/Footer";
-import ImageSlider from "../components/ImageSlider";
+import ImageSlider from "../components/ImageSlider/ImageSlider";
 import CountryGrid from "../components/CountryList";
 
 const HomeLayout = () => {

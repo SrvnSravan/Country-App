@@ -9,8 +9,8 @@ export default function Footer() {
                     <i className="bi bi-twitter mx-3 fs-4"></i>
                     <i className="bi bi-instagram mx-3 fs-4"></i>
                 </div>
-                <div className="mb-1 fs-6 text-muted">example@email.com</div>
-                <small className="text-muted">&copy; 2025 Name. All rights reserved.</small>
+                <div className="mb-1 fs-6 text-muted">countriesapp@gmail.com</div>
+                <small className="text-muted">&copy; 2025 Times World. All rights reserved.</small>
             </div>
         </footer>
     );

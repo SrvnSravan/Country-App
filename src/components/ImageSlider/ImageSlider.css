@@ -1,0 +1,37 @@
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+    top: auto;
+    bottom: 10px;
+    transform: translateY(0%);
+    width: auto;
+}
+
+.carousel .carousel-control-prev {
+    left: 40%;
+}
+
+.carousel .carousel-control-next {
+    right: 40%;
+}
+
+.carousel-indicators {
+    bottom: -5px;
+}
+
+.carousel-indicators li,
+.carousel-indicators [data-bs-target] {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: rgb(255, 255, 255);
+}

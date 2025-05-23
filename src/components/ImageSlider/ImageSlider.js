@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel, Row, Col } from "react-bootstrap";
+import './ImageSlider.css';
 
 const ImageSlider = () => {
     return (
@@ -27,8 +28,8 @@ const ImageSlider = () => {
                 </Col>
 
                 {/* Main Slider - comes second on small screens */}
-                <Col xs={12} md={8} className="order-2 order-md-1">
-                    <Carousel fade indicators={true}>
+                <Col xs={12} md={8} className="order-2 order-md-1 carousel-wrapper">
+                    <Carousel fade indicators controls>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
@@ -67,6 +68,7 @@ const ImageSlider = () => {
                         </Carousel.Item>
                     </Carousel>
                 </Col>
+
             </Row>
         </div>
     );
